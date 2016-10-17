@@ -34,8 +34,14 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddReceiptCommand.cs" />
+    <Compile Include="Commands\Dtos\Receipt.cs" />
+    <Compile Include="Commands\Dtos\ReceiptItem.cs" />
+    <Compile Include="Commands\Dtos\ReceiptDiscountOrMarkup.cs" />
+    <Compile Include="Commands\Dtos\ReceiptTotal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

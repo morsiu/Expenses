@@ -4,9 +4,9 @@ using Mors.Expenses.Data.Commands.Dtos;
 namespace Mors.Expenses.Data.Commands
 {
     [DataContract]
-    public class AddReceiptCommand
+    public class AddFiscalReceiptCommand
     {
         [DataMember]
-        public Receipt Receipt { get; private set; }
+        public FiscalReceipt Receipt { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Mors.Expenses.Data.Commands.Dtos
 {
     /// <summary>
-    /// Represents a receipt in the form of "paragon fiskalny".
+    /// Represents a fiscal receipt.
     /// </summary>
     [DataContract]
     public class FiscalReceipt

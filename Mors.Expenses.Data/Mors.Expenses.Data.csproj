@@ -35,13 +35,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddFiscalReceiptCommand.cs" />
+    <Compile Include="Commands\AddFiscalReceiptCommandResult.cs" />
     <Compile Include="Commands\Dtos\FiscalReceipt.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptItem.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptDiscountOrMarkup.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptTotal.cs" />
+    <Compile Include="Commands\Dtos\FiscalReceiptValidationError.cs" />
+    <Compile Include="Commands\Dtos\FiscalReceiptValidationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

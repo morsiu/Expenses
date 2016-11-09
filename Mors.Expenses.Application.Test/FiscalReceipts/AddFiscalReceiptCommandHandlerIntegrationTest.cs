@@ -2,7 +2,7 @@
 
 namespace Mors.Expenses.Application.Test.FiscalReceipts
 {
-    public sealed class AddFiscalReceiptCommandHandlerTest
+    public sealed class AddFiscalReceiptCommandHandlerIntegrationTest
     {
     }
 }

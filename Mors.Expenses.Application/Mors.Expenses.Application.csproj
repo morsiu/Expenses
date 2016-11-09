@@ -35,10 +35,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandler.cs" />
+    <Compile Include="FiscalReceipts\FiscalReceiptValidator.cs" />
+    <Compile Include="FiscalReceipts\NipValidator.cs" />
     <Compile Include="ICommandEnvironment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Mors.Expenses.Data\Mors.Expenses.Data.csproj">
+      <Project>{D825D1FF-D4CF-4B74-8A44-FBFB73E1CB9D}</Project>
+      <Name>Mors.Expenses.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

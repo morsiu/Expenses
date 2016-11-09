@@ -11,12 +11,6 @@ namespace Mors.Expenses.Data.Commands.Dtos
     public class FiscalReceipt
     {
         /// <summary>
-        /// Gets the unique id of the receipt
-        /// </summary>
-        [DataMember]
-        public object Id { get; set; }
-
-        /// <summary>
         /// Gets the state registered name of the tax payer.
         /// </summary>
         [DataMember]
@@ -39,6 +33,18 @@ namespace Mors.Expenses.Data.Commands.Dtos
         /// </summary>
         [DataMember]
         public DateTime TimeAndDateOfSale { get; set; }
+
+        /// <summary>
+        /// Gets the address of the sale place.
+        /// </summary>
+        [DataMember]
+        public string AddressOfSalePlace { get; set; }
+
+        /// <summary>
+        /// Gets the name of the sale place
+        /// </summary>
+        [DataMember]
+        public string NameOfSalePlace { get; set; }
 
         /// <summary>
         /// Gets the list of items.

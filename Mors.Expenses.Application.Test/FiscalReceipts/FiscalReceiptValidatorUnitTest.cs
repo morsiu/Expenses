@@ -25,19 +25,6 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(isValid);
         }
 
-        [Fact]
-        public static void Validate_Returns_False_Given_Receipt_With_Invalid_Item()
-        {
-            Assert.False(FiscalReceiptValidator.Validate(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[] { null }; })));
-        }
-
-        [Theory]
-        [MemberData("ReceiptsWithInvalidItemsCollections")]
-        public static void Validate_Returns_False_Given_Receipt_With_Invalid_Items_Collection(IReadOnlyList<FiscalReceiptItem> items)
-        {
-            Assert.False(FiscalReceiptValidator.Validate(ModifyValidReceipt(r => { r.Items = items; })));
-        }
-
         public static IEnumerable InvalidReceipts()
         {
             yield return Row(default(FiscalReceipt));
@@ -64,12 +51,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.PaymentForm = " "; }));
             yield return Row(ModifyValidReceipt(r => { r.TimeAndDateOfSale = new DateTime(2004, 12, 31, 23, 59, 59); }));
             yield return Row(ModifyValidReceipt(r => { r.TaxPayerNip = "0000000000"; }));
-        }
-
-        public static IEnumerable ReceiptsWithInvalidItemsCollections()
-        {
-            yield return Row(default(IReadOnlyList<FiscalReceiptItem>));
-            yield return Row(new List<FiscalReceiptItem>());
+            yield return Row(ModifyValidReceipt(r => { r.Items = null; }));
+            yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[0]; }));
+            yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[] { null }; }));
         }
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)

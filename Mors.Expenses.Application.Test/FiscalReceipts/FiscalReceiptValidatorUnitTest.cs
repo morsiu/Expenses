@@ -57,6 +57,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.DiscountsAndMarkups = new FiscalReceiptDiscountOrMarkup[] { null }; }));
             yield return Row(ModifyValidReceipt(r => { r.TotalsPerVatRate = null; }));
             yield return Row(ModifyValidReceipt(r => { r.TotalsPerVatRate = new FiscalReceiptTotal[0]; }));
+            yield return Row(ModifyValidReceipt(r => { r.TotalsPerVatRate = new FiscalReceiptTotal[] { null }; }));
         }
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)

@@ -28,6 +28,10 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (!fiscalReceipt.TotalsPerVatRate.Any(FiscalReceiptTotalValidator.Validate))
+            {
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.TaxPayerName))
             {
                 return false;

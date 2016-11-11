@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandlerIntegrationTest.cs" />
+    <Compile Include="FiscalReceipts\FiscalReceiptDiscountOrMarkupValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptItemValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\NipValidatorUnitTest.cs" />

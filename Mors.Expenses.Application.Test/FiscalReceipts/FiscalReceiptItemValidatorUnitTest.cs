@@ -28,6 +28,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceiptItem(ri => { ri.Name = null; }));
             yield return Row(ModifyValidReceiptItem(ri => { ri.Name = ""; }));
             yield return Row(ModifyValidReceiptItem(ri => { ri.Name = " "; }));
+            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = null; }));
+            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = ""; }));
+            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = " "; }));
         }
 
         private static FiscalReceiptItem ModifyValidReceiptItem(Action<FiscalReceiptItem> modify)
@@ -48,7 +51,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             {
                 Amount = 0.574m,
                 GrossValue = 9.18m,
-                Name = "D_FILET Z KURCH.*2",
+                Name = "D_FILET Z KURCZ.*2",
                 UnitGrossValue = 15.99m,
                 VatRateLetter = "D"
             };

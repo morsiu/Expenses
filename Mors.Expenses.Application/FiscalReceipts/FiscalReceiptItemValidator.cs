@@ -10,6 +10,10 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (string.IsNullOrWhiteSpace(item.VatRateLetter))
+            {
+                return false;
+            }
             return !string.IsNullOrWhiteSpace(item.Name);
         }
     }

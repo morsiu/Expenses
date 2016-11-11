@@ -1,67 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Mors.Expenses.Data.Commands.Dtos;
 
 namespace Mors.Expenses.Application.FiscalReceipts
 {
     internal static class FiscalReceiptValidator
     {
-        public static FiscalReceiptValidationResult Validate(FiscalReceipt fiscalReceipt)
-        {
-            var validationErrors = ValidateReceipt(fiscalReceipt);
-            return new FiscalReceiptValidationResult
-            {
-                ReceiptValidationErrors = validationErrors.ToList()
-            };
-        }
-
-        private static IEnumerable<FiscalReceiptValidationError> ValidateReceipt(FiscalReceipt fiscalReceipt)
+        public static bool Validate(FiscalReceipt fiscalReceipt)
         {
             if (fiscalReceipt == null)
             {
-                yield return FiscalReceiptValidationError.MissingFiscalReceipt;
-                yield break;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.TaxPayerName))
             {
-                yield return FiscalReceiptValidationError.MissingTaxPayerName;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.TaxPayerAddress))
             {
-                yield return FiscalReceiptValidationError.MissingTaxPayerAddress;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.TaxPayerNip))
             {
-                yield return FiscalReceiptValidationError.MissingTaxPayerNip;
+                return false;
             }
             else
             {
                 if (!NipValidator.Validate(fiscalReceipt.TaxPayerNip))
                 {
-                    yield return FiscalReceiptValidationError.InvalidTaxPayerNip;
+                    return false;
                 }
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.AddressOfSalePlace))
             {
-                yield return FiscalReceiptValidationError.MissingAddressOfSalePlace;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.NameOfSalePlace))
             {
-                yield return FiscalReceiptValidationError.MissingNameOfSalePlace;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.CurrencyCode))
             {
-                yield return FiscalReceiptValidationError.MissingCurrencyCode;
+                return false;
             }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.PaymentForm))
             {
-                yield return FiscalReceiptValidationError.MissingPaymentForm;
+                return false;
             }
             if (fiscalReceipt.TimeAndDateOfSale < new DateTime(2005, 1, 1))
             {
-                yield return FiscalReceiptValidationError.TimeAndDateOfSaleBeforeYear2005;
+                return false;
             }
+            return true;
         }
     }
 }

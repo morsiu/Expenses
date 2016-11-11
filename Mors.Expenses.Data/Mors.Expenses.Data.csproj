@@ -40,8 +40,6 @@
     <Compile Include="Commands\Dtos\FiscalReceiptItem.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptDiscountOrMarkup.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptTotal.cs" />
-    <Compile Include="Commands\Dtos\FiscalReceiptValidationError.cs" />
-    <Compile Include="Commands\Dtos\FiscalReceiptValidationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

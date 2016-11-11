@@ -6,7 +6,5 @@ namespace Mors.Expenses.Data.Commands
     [DataContract]
     public class AddFiscalReceiptCommandResult
     {
-        [DataMember]
-        public FiscalReceiptValidationResult FiscalReceiptValidationResult { get; set; }
     }
 }

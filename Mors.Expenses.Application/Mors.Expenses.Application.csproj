@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandler.cs" />
+    <Compile Include="FiscalReceipts\FiscalReceiptItemValidator.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptValidator.cs" />
     <Compile Include="FiscalReceipts\NipValidator.cs" />
     <Compile Include="ICommandEnvironment.cs" />

@@ -55,6 +55,8 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[0]; }));
             yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[] { null }; }));
             yield return Row(ModifyValidReceipt(r => { r.DiscountsAndMarkups = new FiscalReceiptDiscountOrMarkup[] { null }; }));
+            yield return Row(ModifyValidReceipt(r => { r.TotalsPerVatRate = null; }));
+            yield return Row(ModifyValidReceipt(r => { r.TotalsPerVatRate = new FiscalReceiptTotal[0]; }));
         }
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)
@@ -90,6 +92,16 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                         Name = "D_SEREK WIEJSKI PIA",
                         UnitGrossValue = 1.76m,
                         VatRateLetter = "D"
+                    }
+                },
+                TotalsPerVatRate = new FiscalReceiptTotal[]
+                {
+                    new FiscalReceiptTotal
+                    {
+                        GrossValue = 1.76m,
+                        VatRateLetter = "D",
+                        VatRatePercentValue = 5m,
+                        VatValue = 0.08m
                     }
                 }
             };

@@ -54,6 +54,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.Items = null; }));
             yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[0]; }));
             yield return Row(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[] { null }; }));
+            yield return Row(ModifyValidReceipt(r => { r.DiscountsAndMarkups = new FiscalReceiptDiscountOrMarkup[] { null }; }));
         }
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)

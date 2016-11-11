@@ -20,6 +20,10 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (fiscalReceipt.DiscountsAndMarkups != null && !fiscalReceipt.DiscountsAndMarkups.Any(FiscalReceiptDiscountOrMarkupValidator.Validate))
+            {
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(fiscalReceipt.TaxPayerName))
             {
                 return false;

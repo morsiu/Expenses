@@ -55,6 +55,7 @@
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandlerIntegrationTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptDiscountOrMarkupValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptItemValidatorUnitTest.cs" />
+    <Compile Include="FiscalReceipts\FiscalReceiptTotalValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\NipValidatorUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

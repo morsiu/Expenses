@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Mors.Expenses.Data.Commands.Dtos;
 
 namespace Mors.Expenses.Application.FiscalReceipts
@@ -8,6 +9,14 @@ namespace Mors.Expenses.Application.FiscalReceipts
         public static bool Validate(FiscalReceipt fiscalReceipt)
         {
             if (fiscalReceipt == null)
+            {
+                return false;
+            }
+            if (fiscalReceipt.Items == null || !fiscalReceipt.Items.Any())
+            {
+                return false;
+            }
+            if (fiscalReceipt.Items != null && !fiscalReceipt.Items.Any(FiscalReceiptItemValidator.Validate))
             {
                 return false;
             }

@@ -25,7 +25,20 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(isValid);
         }
 
-        public static IEnumerable<IEnumerable> InvalidReceipts()
+        [Fact]
+        public static void Validate_Returns_False_Given_Receipt_With_Invalid_Item()
+        {
+            Assert.False(FiscalReceiptValidator.Validate(ModifyValidReceipt(r => { r.Items = new FiscalReceiptItem[] { null }; })));
+        }
+
+        [Theory]
+        [MemberData("ReceiptsWithInvalidItemsCollections")]
+        public static void Validate_Returns_False_Given_Receipt_With_Invalid_Items_Collection(IReadOnlyList<FiscalReceiptItem> items)
+        {
+            Assert.False(FiscalReceiptValidator.Validate(ModifyValidReceipt(r => { r.Items = items; })));
+        }
+
+        public static IEnumerable InvalidReceipts()
         {
             yield return Row(default(FiscalReceipt));
             yield return Row(ModifyValidReceipt(r => { r.TaxPayerName = null; }));
@@ -53,11 +66,17 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.TaxPayerNip = "0000000000"; }));
         }
 
-        private static FiscalReceipt[] ModifyValidReceipt(Action<FiscalReceipt> change)
+        public static IEnumerable ReceiptsWithInvalidItemsCollections()
+        {
+            yield return Row(default(IReadOnlyList<FiscalReceiptItem>));
+            yield return Row(new List<FiscalReceiptItem>());
+        }
+
+        private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)
         {
             FiscalReceipt receipt = ValidReceipt();
             change(receipt);
-            return new[] { receipt };
+            return receipt;
         }
 
         private static IEnumerable Row(params object[] parameters)
@@ -76,7 +95,18 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                 NameOfSalePlace = "* CARREFOUR * CH Arkadia",
                 CurrencyCode = "PLN",
                 PaymentForm = "KARTAPŁATNI",
-                TimeAndDateOfSale = new DateTime(2005, 1, 1)
+                TimeAndDateOfSale = new DateTime(2005, 1, 1),
+                Items = new FiscalReceiptItem[]
+                {
+                    new FiscalReceiptItem
+                    {
+                        Amount = 1m,
+                        GrossValue = 1.76m,
+                        Name = "D_SEREK WIEJSKI PIA",
+                        UnitGrossValue = 1.76m,
+                        VatRateLetter = "D"
+                    }
+                }
             };
         }
     }

@@ -6,7 +6,11 @@ namespace Mors.Expenses.Application.FiscalReceipts
     {
         public static bool Validate(FiscalReceiptItem item)
         {
-            return true;
+            if (item == null)
+            {
+                return false;
+            }
+            return !string.IsNullOrWhiteSpace(item.Name);
         }
     }
 }

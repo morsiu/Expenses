@@ -71,6 +71,18 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (!fiscalReceipt.Items.Select(i => i.VatRateLetter).Distinct().OrderBy(v => v)
+                .SequenceEqual(fiscalReceipt.TotalsPerVatRate.Select(t => t.VatRateLetter).Distinct().OrderBy(v => v)))
+            {
+                return false;
+            }
+            if (fiscalReceipt.DiscountsAndMarkups != null &&
+                fiscalReceipt.DiscountsAndMarkups.Select(dm => dm.VatRateLetter).Distinct()
+                .Except(fiscalReceipt.Items.Select(i => i.VatRateLetter).Distinct())
+                .Any())
+            {
+                return false;
+            }
             return true;
         }
     }

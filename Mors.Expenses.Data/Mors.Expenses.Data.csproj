@@ -40,11 +40,14 @@
     <Compile Include="Commands\Dtos\FiscalReceiptItem.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptDiscountOrMarkup.cs" />
     <Compile Include="Commands\Dtos\FiscalReceiptTotal.cs" />
+    <Compile Include="Events\Dtos\FiscalReceipt.cs" />
+    <Compile Include="Events\Dtos\FiscalReceiptDiscountOrMarkup.cs" />
+    <Compile Include="Events\Dtos\FiscalReceiptItem.cs" />
+    <Compile Include="Events\Dtos\FiscalReceiptTotal.cs" />
+    <Compile Include="Events\FiscalReceiptAddedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

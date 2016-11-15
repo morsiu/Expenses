@@ -67,6 +67,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return Row(ModifyValidReceipt(r => { r.DiscountsAndMarkups = new[] { new FiscalReceiptDiscountOrMarkup { Name = "1", VatRateLetter = "B" } };
                                                        r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
                                                        r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" } }; }));
+            yield return Row(ModifyValidReceipt(r => { r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
+                                                       r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" },
+                                                                                    new FiscalReceiptTotal { VatRateLetter = "A" } }; }));
         }
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)

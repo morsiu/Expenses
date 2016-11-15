@@ -83,6 +83,10 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (fiscalReceipt.TotalsPerVatRate.Count > fiscalReceipt.TotalsPerVatRate.Select(t => t.VatRateLetter).Distinct().Count())
+            {
+                return false;
+            }
             return true;
         }
     }

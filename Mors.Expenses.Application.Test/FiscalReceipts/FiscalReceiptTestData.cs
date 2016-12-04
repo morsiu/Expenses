@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using Mors.Expenses.Data.Commands.Dtos;
 
 namespace Mors.Expenses.Application.Test.FiscalReceipts
 {
     public static class FiscalReceiptTestData
     {
+
         public static FiscalReceiptItem ValidReceiptItem()
         {
             return new FiscalReceiptItem
@@ -71,6 +73,72 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                     }
                 }
             };
+        }
+
+        public static IEnumerable<FiscalReceipt> InvalidReceipts()
+        {
+            yield return default(FiscalReceipt);
+            var validReceipt = new Modify<FiscalReceipt>(ValidReceipt);
+            yield return default(FiscalReceipt);
+            yield return validReceipt.Modified(r => { r.TaxPayerName = null; });
+            yield return validReceipt.Modified(r => { r.TaxPayerName = string.Empty; });
+            yield return validReceipt.Modified(r => { r.TaxPayerName = " "; });
+            yield return validReceipt.Modified(r => { r.TaxPayerAddress = null; });
+            yield return validReceipt.Modified(r => { r.TaxPayerAddress = string.Empty; });
+            yield return validReceipt.Modified(r => { r.TaxPayerAddress = " "; });
+            yield return validReceipt.Modified(r => { r.TaxPayerNip = null; });
+            yield return validReceipt.Modified(r => { r.TaxPayerNip = string.Empty; });
+            yield return validReceipt.Modified(r => { r.TaxPayerNip = " "; });
+            yield return validReceipt.Modified(r => { r.AddressOfSalePlace = null; });
+            yield return validReceipt.Modified(r => { r.AddressOfSalePlace = string.Empty; });
+            yield return validReceipt.Modified(r => { r.AddressOfSalePlace = " "; });
+            yield return validReceipt.Modified(r => { r.NameOfSalePlace = null; });
+            yield return validReceipt.Modified(r => { r.NameOfSalePlace = string.Empty; });
+            yield return validReceipt.Modified(r => { r.NameOfSalePlace = " "; });
+            yield return validReceipt.Modified(r => { r.CurrencyCode = null; });
+            yield return validReceipt.Modified(r => { r.CurrencyCode = string.Empty; });
+            yield return validReceipt.Modified(r => { r.CurrencyCode = " "; });
+            yield return validReceipt.Modified(r => { r.PaymentForm = null; });
+            yield return validReceipt.Modified(r => { r.PaymentForm = string.Empty; });
+            yield return validReceipt.Modified(r => { r.PaymentForm = " "; });
+            yield return validReceipt.Modified(r => { r.TimeAndDateOfSale = new DateTime(2004, 12, 31, 23, 59, 59); });
+            yield return validReceipt.Modified(r => { r.TaxPayerNip = "0000000000"; });
+            yield return validReceipt.Modified(r => { r.Items = null; });
+            yield return validReceipt.Modified(r => { r.Items = new FiscalReceiptItem[0]; });
+            yield return validReceipt.Modified(r => { r.Items = new FiscalReceiptItem[] { null }; });
+            yield return validReceipt.Modified(r => { r.DiscountsAndMarkups = new FiscalReceiptDiscountOrMarkup[] { null }; });
+            yield return validReceipt.Modified(r => { r.TotalsPerVatRate = null; });
+            yield return validReceipt.Modified(r => { r.TotalsPerVatRate = new FiscalReceiptTotal[0]; });
+            yield return validReceipt.Modified(r => { r.TotalsPerVatRate = new FiscalReceiptTotal[] { null }; });
+            yield return validReceipt.Modified(r => { r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" },
+                                                                        new FiscalReceiptItem { Name = "2", VatRateLetter = "B" } };
+                                                      r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" } }; });
+            yield return validReceipt.Modified(r => { r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
+                                                      r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" },
+                                                                                   new FiscalReceiptTotal { VatRateLetter = "B" } }; });
+            yield return validReceipt.Modified(r => { r.DiscountsAndMarkups = new[] { new FiscalReceiptDiscountOrMarkup { Name = "1", VatRateLetter = "B" } };
+                                                      r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
+                                                      r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" } }; });
+            yield return validReceipt.Modified(r => { r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
+                                                      r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" },
+                                                                                   new FiscalReceiptTotal { VatRateLetter = "A" } }; });
+        }
+
+        private sealed class Modify<T>
+        {
+            private readonly Func<T> _initial;
+
+            public Modify(Func<T> initial)
+            {
+                _initial = initial;
+            }
+
+            public T Modified(Action<T> modify)
+            {
+                var initial = _initial();
+                modify(initial);
+                return initial;
+            }
         }
     }
 }

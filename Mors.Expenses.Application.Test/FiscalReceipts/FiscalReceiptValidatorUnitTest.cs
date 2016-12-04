@@ -13,7 +13,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [Fact]
         public static void Validate_Returns_True_Given_Valid_Receipt()
         {
-            var isValid = FiscalReceiptValidator.Validate(ValidReceipt());
+            var isValid = FiscalReceiptValidator.Validate(FiscalReceiptTestData.ValidReceipt());
             Assert.True(isValid);
         }
 
@@ -74,7 +74,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         private static FiscalReceipt ModifyValidReceipt(Action<FiscalReceipt> change)
         {
-            FiscalReceipt receipt = ValidReceipt();
+            FiscalReceipt receipt = FiscalReceiptTestData.ValidReceipt();
             change(receipt);
             return receipt;
         }
@@ -82,42 +82,6 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         private static IEnumerable Row(params object[] parameters)
         {
             return parameters;
-        }
-
-        private static FiscalReceipt ValidReceipt()
-        {
-            return new FiscalReceipt()
-            {
-                TaxPayerName = "CARREFOUR Polska Sp. z o. o.",
-                TaxPayerAddress = "03-734 Warszawa ul. Targowa 72",
-                TaxPayerNip = "937-00-08-168",
-                AddressOfSalePlace = "00-175 Warszawa ul. Jana Pawła II 82",
-                NameOfSalePlace = "* CARREFOUR * CH Arkadia",
-                CurrencyCode = "PLN",
-                PaymentForm = "KARTAPŁATNI",
-                TimeAndDateOfSale = new DateTime(2005, 1, 1),
-                Items = new FiscalReceiptItem[]
-                {
-                    new FiscalReceiptItem
-                    {
-                        Amount = 1m,
-                        GrossValue = 1.76m,
-                        Name = "D_SEREK WIEJSKI PIA",
-                        UnitGrossValue = 1.76m,
-                        VatRateLetter = "D"
-                    }
-                },
-                TotalsPerVatRate = new FiscalReceiptTotal[]
-                {
-                    new FiscalReceiptTotal
-                    {
-                        GrossValue = 1.76m,
-                        VatRateLetter = "D",
-                        VatRatePercentValue = 5m,
-                        VatValue = 0.08m
-                    }
-                }
-            };
         }
     }
 }

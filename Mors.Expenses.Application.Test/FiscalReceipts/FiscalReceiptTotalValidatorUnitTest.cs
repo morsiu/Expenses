@@ -11,7 +11,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [Fact]
         public void Validate_Returns_True_For_Valid_Total()
         {
-            Assert.True(FiscalReceiptTotalValidator.Validate(ValidTotal()));
+            Assert.True(FiscalReceiptTotalValidator.Validate(FiscalReceiptTestData.ValidTotal()));
         }
 
         [Theory]
@@ -23,7 +23,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         private static FiscalReceiptTotal ModifyValidTotal(Action<FiscalReceiptTotal> modify)
         {
-            var total = ValidTotal();
+            var total = FiscalReceiptTestData.ValidTotal();
             modify(total);
             return total;
         }
@@ -40,17 +40,6 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         private static IEnumerable Row(params object[] parameters)
         {
             return parameters;
-        }
-
-        private static FiscalReceiptTotal ValidTotal()
-        {
-            return new FiscalReceiptTotal
-            {
-                GrossValue = 20.48m,
-                VatRateLetter = "D",
-                VatRatePercentValue = 23m,
-                VatValue = 3.83m
-            };
         }
     }
 }

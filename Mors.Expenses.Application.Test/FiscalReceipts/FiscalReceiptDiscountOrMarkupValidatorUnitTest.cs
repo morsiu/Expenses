@@ -11,7 +11,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [Fact]
         public void Validate_Returns_True_For_Valid_Discount_Or_Markup()
         {
-            Assert.True(FiscalReceiptDiscountOrMarkupValidator.Validate(ValidDiscountOrMarkup()));
+            Assert.True(FiscalReceiptDiscountOrMarkupValidator.Validate(FiscalReceiptTestData.ValidDiscountOrMarkup()));
         }
 
         [Theory]
@@ -34,7 +34,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         private static FiscalReceiptDiscountOrMarkup ModifyValidDiscountOrMarkup(Action<FiscalReceiptDiscountOrMarkup> modify)
         {
-            var discountOrMarkup = ValidDiscountOrMarkup();
+            var discountOrMarkup = FiscalReceiptTestData.ValidDiscountOrMarkup();
             modify(discountOrMarkup);
             return discountOrMarkup;
         }
@@ -42,16 +42,6 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         private static IEnumerable Row(params object[] parameters)
         {
             return parameters;
-        }
-
-        public static FiscalReceiptDiscountOrMarkup ValidDiscountOrMarkup()
-        {
-            return new FiscalReceiptDiscountOrMarkup
-            {
-                Name = "Rabat JOG ZOT 370G +1ZA50%",
-                Value = -1.88m,
-                VatRateLetter = "D"
-            };
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [Fact]
         public void Validate_Returns_True_For_Valid_Receipt_Item()
         {
-            Assert.True(FiscalReceiptItemValidator.Validate(ValidReceiptItem()));
+            Assert.True(FiscalReceiptItemValidator.Validate(FiscalReceiptTestData.ValidReceiptItem()));
         }
 
         [Theory]
@@ -35,7 +35,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         private static FiscalReceiptItem ModifyValidReceiptItem(Action<FiscalReceiptItem> modify)
         {
-            var receiptItem = ValidReceiptItem();
+            var receiptItem = FiscalReceiptTestData.ValidReceiptItem();
             modify(receiptItem);
             return receiptItem;
         }
@@ -45,16 +45,5 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             return parameters;
         }
 
-        private static FiscalReceiptItem ValidReceiptItem()
-        {
-            return new FiscalReceiptItem
-            {
-                Amount = 0.574m,
-                GrossValue = 9.18m,
-                Name = "D_FILET Z KURCZ.*2",
-                UnitGrossValue = 15.99m,
-                VatRateLetter = "D"
-            };
-        }
     }
 }

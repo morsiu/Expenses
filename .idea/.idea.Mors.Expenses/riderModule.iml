@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application.Test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.abstractions.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.runner.utility.desktop.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/xunit.runner.visualstudio.2.1.0/build/_common/xunit.runner.visualstudio.testadapter.dll" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application.Test/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application.Test/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Application/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Data/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Mors.Expenses.Data/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

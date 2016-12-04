@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
 using Xunit;
@@ -22,28 +21,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(FiscalReceiptItemValidator.Validate(invalidReceiptItem));
         }
 
-        public static IEnumerable<IEnumerable> InvalidReceiptItems()
+        public static IEnumerable InvalidReceiptItems()
         {
-            yield return Row(default(FiscalReceiptItem));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.Name = null; }));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.Name = ""; }));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.Name = " "; }));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = null; }));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = ""; }));
-            yield return Row(ModifyValidReceiptItem(ri => { ri.VatRateLetter = " "; }));
+            return FiscalReceiptTestData.InvalidReceiptItems().Select(i => new[] { i });
         }
-
-        private static FiscalReceiptItem ModifyValidReceiptItem(Action<FiscalReceiptItem> modify)
-        {
-            var receiptItem = FiscalReceiptTestData.ValidReceiptItem();
-            modify(receiptItem);
-            return receiptItem;
-        }
-
-        private static IEnumerable Row(params object[] parameters)
-        {
-            return parameters;
-        }
-
     }
 }

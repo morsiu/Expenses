@@ -75,6 +75,18 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             };
         }
         
+        public static IEnumerable<FiscalReceiptItem> InvalidReceiptItems()
+        {
+            yield return default(FiscalReceiptItem);
+            var validItem = new Modify<FiscalReceiptItem>(ValidReceiptItem);
+            yield return validItem.Modified(ri => { ri.Name = null; });
+            yield return validItem.Modified(ri => { ri.Name = ""; });
+            yield return validItem.Modified(ri => { ri.Name = " "; });
+            yield return validItem.Modified(ri => { ri.VatRateLetter = null; });
+            yield return validItem.Modified(ri => { ri.VatRateLetter = ""; });
+            yield return validItem.Modified(ri => { ri.VatRateLetter = " "; });
+        }        
+        
         public static IEnumerable<FiscalReceiptDiscountOrMarkup> InvalidDiscountOrMarkups()
         {
             yield return default(FiscalReceiptDiscountOrMarkup);

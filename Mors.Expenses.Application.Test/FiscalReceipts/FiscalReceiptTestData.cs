@@ -41,7 +41,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         public static FiscalReceipt ValidReceipt()
         {
-            return new FiscalReceipt()
+            return new FiscalReceipt
             {
                 TaxPayerName = "CARREFOUR Polska Sp. z o. o.",
                 TaxPayerAddress = "03-734 Warszawa ul. Targowa 72",
@@ -51,27 +51,8 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                 CurrencyCode = "PLN",
                 PaymentForm = "KARTAPŁATNI",
                 TimeAndDateOfSale = new DateTime(2005, 1, 1),
-                Items = new FiscalReceiptItem[]
-                {
-                    new FiscalReceiptItem
-                    {
-                        Amount = 1m,
-                        GrossValue = 1.76m,
-                        Name = "D_SEREK WIEJSKI PIA",
-                        UnitGrossValue = 1.76m,
-                        VatRateLetter = "D"
-                    }
-                },
-                TotalsPerVatRate = new FiscalReceiptTotal[]
-                {
-                    new FiscalReceiptTotal
-                    {
-                        GrossValue = 1.76m,
-                        VatRateLetter = "D",
-                        VatRatePercentValue = 5m,
-                        VatValue = 0.08m
-                    }
-                }
+                Items = new[] { ValidReceiptItem() },
+                TotalsPerVatRate = new[] { ValidTotal() }
             };
         }
         

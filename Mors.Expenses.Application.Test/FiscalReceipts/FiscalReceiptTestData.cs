@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Mors.Expenses.Data.Commands.Dtos;
 
 namespace Mors.Expenses.Application.Test.FiscalReceipts
@@ -52,7 +53,8 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                 PaymentForm = "KARTAPŁATNI",
                 TimeAndDateOfSale = new DateTime(2005, 1, 1),
                 Items = new[] { ValidReceiptItem() },
-                TotalsPerVatRate = new[] { ValidTotal() }
+                TotalsPerVatRate = new[] { ValidTotal() },
+                DiscountsAndMarkups = new[] { ValidDiscountOrMarkup() }
             };
         }
         
@@ -127,6 +129,18 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return validReceipt.Modified(r => { r.Items = new[] { new FiscalReceiptItem { Name = "1", VatRateLetter = "A" } };
                                                       r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" },
                                                                                    new FiscalReceiptTotal { VatRateLetter = "A" } }; });
+            foreach (var invalidTotal in InvalidTotals())
+            {
+                yield return validReceipt.Modified(r => { r.TotalsPerVatRate = r.TotalsPerVatRate.Concat(new[] {invalidTotal}).ToList(); });
+            }
+            foreach (var invalidItem in InvalidReceiptItems())
+            {
+                yield return validReceipt.Modified(r => { r.Items = r.Items.Concat(new[] {invalidItem}).ToList(); });
+            }
+            foreach (var invalidDiscountOrMarkup in InvalidDiscountOrMarkups())
+            {
+                yield return validReceipt.Modified(r => { r.DiscountsAndMarkups = r.DiscountsAndMarkups.Concat(new[] {invalidDiscountOrMarkup}).ToList(); });
+            }
         }
         
         public static IEnumerable<FiscalReceiptTotal> InvalidTotals()

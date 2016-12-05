@@ -147,6 +147,16 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                                                       r.TotalsPerVatRate = new[] { new FiscalReceiptTotal { VatRateLetter = "A" },
                                                                                    new FiscalReceiptTotal { VatRateLetter = "A" } }; });
         }
+        
+        public static IEnumerable<FiscalReceiptTotal> InvalidTotals()
+        {
+            yield return default(FiscalReceiptTotal);
+            var validTotal = new Modify<FiscalReceiptTotal>(ValidTotal);
+            yield return validTotal.Modified(t => { t.VatRateLetter = null; });
+            yield return validTotal.Modified(t => { t.VatRateLetter = ""; });
+            yield return validTotal.Modified(t => { t.VatRateLetter = " "; });
+            yield return validTotal.Modified(t => { t.VatRatePercentValue = -4m; });
+        }        
 
         private sealed class Modify<T>
         {

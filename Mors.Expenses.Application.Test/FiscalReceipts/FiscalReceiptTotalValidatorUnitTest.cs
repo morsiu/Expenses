@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
 using Xunit;
@@ -30,16 +31,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
 
         public static IEnumerable InvalidTotals()
         {
-            yield return Row(default(FiscalReceiptTotal));
-            yield return Row(ModifyValidTotal(t => { t.VatRateLetter = null; }));
-            yield return Row(ModifyValidTotal(t => { t.VatRateLetter = ""; }));
-            yield return Row(ModifyValidTotal(t => { t.VatRateLetter = " "; }));
-            yield return Row(ModifyValidTotal(t => { t.VatRatePercentValue = -4m; }));
-        }
-
-        private static IEnumerable Row(params object[] parameters)
-        {
-            return parameters;
+            return FiscalReceiptTestData.InvalidTotals().Select(t => new[] {t});
         }
     }
 }

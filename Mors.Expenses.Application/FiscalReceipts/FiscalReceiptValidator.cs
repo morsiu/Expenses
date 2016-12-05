@@ -16,11 +16,11 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
-            if (fiscalReceipt.Items != null && !fiscalReceipt.Items.Any(FiscalReceiptItemValidator.Validate))
+            if (fiscalReceipt.Items != null && !fiscalReceipt.Items.All(FiscalReceiptItemValidator.Validate))
             {
                 return false;
             }
-            if (fiscalReceipt.DiscountsAndMarkups != null && !fiscalReceipt.DiscountsAndMarkups.Any(FiscalReceiptDiscountOrMarkupValidator.Validate))
+            if (fiscalReceipt.DiscountsAndMarkups != null && !fiscalReceipt.DiscountsAndMarkups.All(FiscalReceiptDiscountOrMarkupValidator.Validate))
             {
                 return false;
             }
@@ -28,7 +28,7 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
-            if (!fiscalReceipt.TotalsPerVatRate.Any(FiscalReceiptTotalValidator.Validate))
+            if (!fiscalReceipt.TotalsPerVatRate.All(FiscalReceiptTotalValidator.Validate))
             {
                 return false;
             }

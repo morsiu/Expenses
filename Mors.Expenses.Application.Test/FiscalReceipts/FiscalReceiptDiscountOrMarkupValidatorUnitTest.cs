@@ -26,17 +26,5 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         {
             return FiscalReceiptTestData.InvalidDiscountOrMarkups().Select(m => new[] {m});
         }
-
-        private static FiscalReceiptDiscountOrMarkup ModifyValidDiscountOrMarkup(Action<FiscalReceiptDiscountOrMarkup> modify)
-        {
-            var discountOrMarkup = FiscalReceiptTestData.ValidDiscountOrMarkup();
-            modify(discountOrMarkup);
-            return discountOrMarkup;
-        }
-
-        private static IEnumerable Row(params object[] parameters)
-        {
-            return parameters;
-        }
     }
 }

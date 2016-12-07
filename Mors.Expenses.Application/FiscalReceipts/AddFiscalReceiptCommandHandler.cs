@@ -1,4 +1,5 @@
 ﻿using Mors.Expenses.Data.Commands;
+using Mors.Expenses.Data.Events;
 
 namespace Mors.Expenses.Application.FiscalReceipts
 {
@@ -10,6 +11,24 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            environment.PublishEvent(
+                new FiscalReceiptAddedEvent(
+                    new Data.Events.Dtos.FiscalReceipt(
+                        command.Receipt.TaxPayerName,
+                        command.Receipt.TaxPayerAddress,
+                        command.Receipt.TaxPayerNip,
+                        command.Receipt.AddressOfSalePlace,
+                        command.Receipt.NameOfSalePlace,
+                        command.Receipt.TimeAndDateOfSale,
+                        null,
+                        null,
+                        null,
+                        command.Receipt.GrossTotal,
+                        command.Receipt.VatTotal,
+                        command.Receipt.PaymentTotal,
+                        command.Receipt.PaymentForm,
+                        command.Receipt.CashPaymentChange,
+                        command.Receipt.CurrencyCode)));
             return true;
         }
     }

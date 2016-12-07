@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandEnvironmentDummy.cs" />
+    <Compile Include="EventRecorder.cs" />
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandlerIntegrationTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptDiscountOrMarkupValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptItemValidatorUnitTest.cs" />

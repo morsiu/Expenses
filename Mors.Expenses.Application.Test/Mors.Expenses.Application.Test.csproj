@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandEnvironmentDummy.cs" />
     <Compile Include="FiscalReceipts\AddFiscalReceiptCommandHandlerIntegrationTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptDiscountOrMarkupValidatorUnitTest.cs" />
     <Compile Include="FiscalReceipts\FiscalReceiptItemValidatorUnitTest.cs" />

@@ -12,7 +12,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         public void Execute_Returns_False_Given_Invalid_Command(AddFiscalReceiptCommand command)
         {
             var handler = Handler();
-            var result = handler.Execute(command, null);
+            var result = handler.Execute(command, new CommandEnvironmentDummy());
             Assert.Equal(false, result);
         }
 
@@ -20,7 +20,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         public void Execute_Returns_True_Given_Valid_Command()
         {
             var handler = Handler();
-            var result = handler.Execute(ValidCommand(), null);
+            var result = handler.Execute(ValidCommand(), new CommandEnvironmentDummy());
             Assert.Equal(true, result);
         }
 

@@ -135,6 +135,114 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             {
                 Assert.Equal(_command.Receipt.CurrencyCode, _event.Receipt.CurrencyCode);
             }
+
+            [Fact]
+            public void ReceiptItems()
+            {
+                Assert.NotNull(_event.Receipt.Items);
+            }
+
+            [Fact]
+            public void ReceiptItemCount()
+            {
+                Assert.Equal(_command.Receipt.Items.Count, _event.Receipt.Items.Count);
+            }
+
+            [Fact]
+            public void ReceiptFirstItemAmount()
+            {
+                Assert.Equal(_command.Receipt.Items[0].Amount, _event.Receipt.Items[0].Amount);
+            }
+
+            [Fact]
+            public void ReceiptFirstItemGrossValue()
+            {
+                Assert.Equal(_command.Receipt.Items[0].GrossValue, _event.Receipt.Items[0].GrossValue);
+            }
+
+            [Fact]
+            public void ReceiptFirstItemName()
+            {
+                Assert.Equal(_command.Receipt.Items[0].Name, _event.Receipt.Items[0].Name);
+            }
+
+            [Fact]
+            public void ReceiptFirstItemUnitGrossValue()
+            {
+                Assert.Equal(_command.Receipt.Items[0].UnitGrossValue, _event.Receipt.Items[0].UnitGrossValue);
+            }
+
+            [Fact]
+            public void ReceiptFirstItemVatRateLetter()
+            {
+                Assert.Equal(_command.Receipt.Items[0].VatRateLetter, _event.Receipt.Items[0].VatRateLetter);
+            }
+
+            [Fact]
+            public void ReceiptDiscountsAndMarkups()
+            {
+                Assert.NotNull(_event.Receipt.DiscountsAndMarkups);
+            }
+
+            [Fact]
+            public void ReceiptDiscountsAndMarkupsCount()
+            {
+                Assert.Equal(_command.Receipt.DiscountsAndMarkups.Count, _event.Receipt.DiscountsAndMarkups.Count);
+            }
+
+            [Fact]
+            public void ReceiptFirstDiscountAndMarkupName()
+            {
+                Assert.Equal(_command.Receipt.DiscountsAndMarkups[0].Name, _event.Receipt.DiscountsAndMarkups[0].Name);
+            }
+
+            [Fact]
+            public void ReceiptFirstDiscountAndMarkupValue()
+            {
+                Assert.Equal(_command.Receipt.DiscountsAndMarkups[0].Value, _event.Receipt.DiscountsAndMarkups[0].Value);
+            }
+
+            [Fact]
+            public void ReceiptFirstDiscountAndMarkupVatRateLetter()
+            {
+                Assert.Equal(_command.Receipt.DiscountsAndMarkups[0].VatRateLetter, _event.Receipt.DiscountsAndMarkups[0].VatRateLetter);
+            }
+
+            [Fact]
+            public void ReceiptTotals()
+            {
+                Assert.NotNull(_event.Receipt.TotalsByVatRateLetter);
+            }
+
+            [Fact]
+            public void ReceiptTotalsCount()
+            {
+                Assert.Equal(_command.Receipt.TotalsPerVatRate.Count, _event.Receipt.TotalsByVatRateLetter.Count);
+            }
+
+            [Fact]
+            public void ReceiptFirstTotalVatRateLetter()
+            {
+                Assert.True(_event.Receipt.TotalsByVatRateLetter.ContainsKey(_command.Receipt.TotalsPerVatRate[0].VatRateLetter));
+            }
+
+            [Fact]
+            public void ReceiptFirstTotalVatRateLetterPercent()
+            {
+                Assert.Equal(_command.Receipt.TotalsPerVatRate[0].VatRatePercentValue, _event.Receipt.TotalsByVatRateLetter[_command.Receipt.TotalsPerVatRate[0].VatRateLetter].VatRatePercentValue);
+            }
+
+            [Fact]
+            public void ReceiptFirstTotalVatValue()
+            {
+                Assert.Equal(_command.Receipt.TotalsPerVatRate[0].VatValue, _event.Receipt.TotalsByVatRateLetter[_command.Receipt.TotalsPerVatRate[0].VatRateLetter].VatValue);
+            }
+
+            [Fact]
+            public void ReceiptFirstTotalGrossValue()
+            {
+                Assert.Equal(_command.Receipt.TotalsPerVatRate[0].GrossValue, _event.Receipt.TotalsByVatRateLetter[_command.Receipt.TotalsPerVatRate[0].VatRateLetter].GrossValue);
+            }
         }
 
         public static IEnumerable InvalidCommands()

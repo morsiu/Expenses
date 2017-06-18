@@ -11,6 +11,12 @@ namespace Mors.Expenses.Data.Commands.Dtos
     public class FiscalReceipt
     {
         /// <summary>
+        /// Gets the number of the fiscal receipt.
+        /// </summary>
+        [DataMember]
+        public string Number { get; set; }
+
+        /// <summary>
         /// Gets the state registered name of the tax payer.
         /// </summary>
         [DataMember]

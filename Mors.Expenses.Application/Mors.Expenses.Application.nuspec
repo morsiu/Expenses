@@ -11,5 +11,8 @@
     <description>$description$</description>
     <releaseNotes></releaseNotes>
     <copyright>$copyright$</copyright>
+        <dependencies>
+      <dependency id="Mors.Expenses.Data" version="0.0.2" />
+    </dependencies>
   </metadata>
 </package>

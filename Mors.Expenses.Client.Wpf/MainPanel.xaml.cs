@@ -2,7 +2,7 @@
 
 namespace Mors.Expenses.Client.Wpf
 {
-    public partial class MainPanel : UserControl
+    internal partial class MainPanel : UserControl
     {
         public MainPanel()
         {

@@ -16,6 +16,7 @@ namespace Mors.Expenses.Application.FiscalReceipts
             environment.PublishEvent(
                 new FiscalReceiptAddedEvent(
                     new Data.Events.Dtos.FiscalReceipt(
+                        command.Receipt.Number,
                         command.Receipt.TaxPayerName,
                         command.Receipt.TaxPayerAddress,
                         command.Receipt.TaxPayerNip,

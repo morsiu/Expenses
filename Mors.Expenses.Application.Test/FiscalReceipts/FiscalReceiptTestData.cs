@@ -44,6 +44,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         {
             return new FiscalReceipt
             {
+                Number = "000067",
                 TaxPayerName = "CARREFOUR Polska Sp. z o. o.",
                 TaxPayerAddress = "03-734 Warszawa ul. Targowa 72",
                 TaxPayerNip = "937-00-08-168",
@@ -91,6 +92,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return default(FiscalReceipt);
             var validReceipt = new Modify<FiscalReceipt>(ValidReceipt);
             yield return default(FiscalReceipt);
+            yield return validReceipt.Modified(r => { r.Number = null; });
+            yield return validReceipt.Modified(r => { r.Number = string.Empty; });
+            yield return validReceipt.Modified(r => { r.Number = " "; });
             yield return validReceipt.Modified(r => { r.TaxPayerName = null; });
             yield return validReceipt.Modified(r => { r.TaxPayerName = string.Empty; });
             yield return validReceipt.Modified(r => { r.TaxPayerName = " "; });
@@ -146,7 +150,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
                 yield return validReceipt.Modified(r => { r.DiscountsAndMarkups = r.DiscountsAndMarkups.Concat(new[] {invalidDiscountOrMarkup}).ToList(); });
             }
         }
-        
+
         public static IEnumerable<FiscalReceiptTotal> InvalidTotals()
         {
             yield return default(FiscalReceiptTotal);
@@ -155,7 +159,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             yield return validTotal.Modified(t => { t.VatRateLetter = ""; });
             yield return validTotal.Modified(t => { t.VatRateLetter = " "; });
             yield return validTotal.Modified(t => { t.VatRatePercentValue = -4m; });
-        }        
+        }
 
         private sealed class Modify<T>
         {

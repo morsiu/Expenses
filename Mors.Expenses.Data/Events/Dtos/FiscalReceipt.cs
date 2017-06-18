@@ -7,6 +7,7 @@ namespace Mors.Expenses.Data.Events.Dtos
     public sealed class FiscalReceipt
     {
         public FiscalReceipt(
+            string number,
             string taxPayerName,
             string taxPayerAddress,
             string taxPayerNip,
@@ -23,6 +24,7 @@ namespace Mors.Expenses.Data.Events.Dtos
             decimal? cashPaymentChange,
             string currencyCode)
         {
+            Number = number;
             TaxPayerName = taxPayerName;
             TaxPayerAddress = taxPayerAddress;
             TaxPayerNip = taxPayerNip;
@@ -39,6 +41,9 @@ namespace Mors.Expenses.Data.Events.Dtos
             CashPaymentChange = cashPaymentChange;
             CurrencyCode = currencyCode;
         }
+
+        [DataMember]
+        public string Number { get; }
 
         [DataMember]
         public decimal? CashPaymentChange { get; }

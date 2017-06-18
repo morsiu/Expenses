@@ -12,6 +12,10 @@ namespace Mors.Expenses.Application.FiscalReceipts
             {
                 return false;
             }
+            if (string.IsNullOrWhiteSpace(fiscalReceipt.Number))
+            {
+                return false;
+            }
             if (fiscalReceipt.Items == null || !fiscalReceipt.Items.Any())
             {
                 return false;

@@ -9,7 +9,7 @@ namespace Mors.Expenses.Data.Commands.Dtos
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the value of the markup/discount. In case of a discount, the value is negative; in case of a markup it is positive.
+        /// Gets or sets the value of the markup/discount. In case of a discount, the value is negative; in case of a markup it is positive.
         /// </summary>
         [DataMember]
         public decimal Value { get; set; }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands;
 using Mors.Expenses.Data.Events;
@@ -245,7 +245,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             }
         }
 
-        public static IEnumerable InvalidCommands()
+        public static IEnumerable<object[]> InvalidCommands()
         {
             yield return new[] { default(AddFiscalReceiptCommand) };
             foreach (var invalidReceipt in FiscalReceiptTestData.InvalidReceipts())

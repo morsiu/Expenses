@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using System.Collections;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
 using Xunit;
+using System.Collections.Generic;
 
 namespace Mors.Expenses.Application.Test.FiscalReceipts
 {
@@ -23,7 +23,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(isValid);
         }
 
-        public static IEnumerable InvalidReceipts()
+        public static IEnumerable<object[]> InvalidReceipts()
         {
             return FiscalReceiptTestData.InvalidReceipts().Select(r => new object[] { r });
         }

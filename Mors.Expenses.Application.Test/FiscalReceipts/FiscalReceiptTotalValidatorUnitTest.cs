@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
@@ -29,7 +29,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             return total;
         }
 
-        public static IEnumerable InvalidTotals()
+        public static IEnumerable<object[]> InvalidTotals()
         {
             return FiscalReceiptTestData.InvalidTotals().Select(t => new[] {t});
         }

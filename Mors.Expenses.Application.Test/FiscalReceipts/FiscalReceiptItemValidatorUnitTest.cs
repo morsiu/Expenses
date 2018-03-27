@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
@@ -21,7 +21,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(FiscalReceiptItemValidator.Validate(invalidReceiptItem));
         }
 
-        public static IEnumerable InvalidReceiptItems()
+        public static IEnumerable<object[]> InvalidReceiptItems()
         {
             return FiscalReceiptTestData.InvalidReceiptItems().Select(i => new[] { i });
         }

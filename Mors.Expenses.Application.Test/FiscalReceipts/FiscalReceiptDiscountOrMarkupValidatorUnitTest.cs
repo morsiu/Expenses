@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands.Dtos;
@@ -21,7 +21,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             Assert.False(FiscalReceiptDiscountOrMarkupValidator.Validate(invalidDiscountOrMarkup));
         }
 
-        public static IEnumerable InvalidDiscountOrMarkups()
+        public static IEnumerable<object[]> InvalidDiscountOrMarkups()
         {
             return FiscalReceiptTestData.InvalidDiscountOrMarkups().Select(m => new[] {m});
         }

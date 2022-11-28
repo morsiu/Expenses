@@ -1,16 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
-    <Version>0.0.2</Version>
-    <PackageProjectUrl>https://github.com/morsiu/Expenses</PackageProjectUrl>
-    <Product>Mors.Expenses.Application</Product>
-    <Company />
-    <Authors>Łukasz Mrozek</Authors>
-    <Copyright>Copyright © Łukasz Mrozek 2017</Copyright>
-    <Description>Expenses application</Description>
-    <PackageId>Mors.Expenses.Application</PackageId>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

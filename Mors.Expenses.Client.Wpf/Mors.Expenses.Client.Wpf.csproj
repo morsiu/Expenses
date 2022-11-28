@@ -1,13 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
-    <Version>0.0.3</Version>
-    <Copyright />
-    <PackageProjectUrl>https://github.com/morsiu/Expenses</PackageProjectUrl>
-    <Authors>Łukasz Mrozek</Authors>
-    <Description>Dekstop client for Expenses application</Description>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

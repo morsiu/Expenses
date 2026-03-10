@@ -11,7 +11,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [InlineData("937-00-08-168")]
         public static void Validate_Returns_True_For_Valid_Nip(string nip)
         {
-            Assert.Equal(true, NipValidator.Validate(nip));
+            Assert.True(NipValidator.Validate(nip));
         }
 
         [Theory]
@@ -25,7 +25,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         [InlineData("0000000000")]
         public static void Validate_Returns_False_For_Invalid_Nip(string invalidNip)
         {
-            Assert.Equal(false, NipValidator.Validate(invalidNip));
+            Assert.False(NipValidator.Validate(invalidNip));
         }
     }
 }

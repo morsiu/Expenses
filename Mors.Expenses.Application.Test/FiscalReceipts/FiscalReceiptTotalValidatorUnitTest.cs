@@ -16,7 +16,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         }
 
         [Theory]
-        [MemberData("InvalidTotals")]
+        [MemberData(nameof(InvalidTotals))]
         public void Validate_Returns_False_For_Invalid_Total(FiscalReceiptTotal invalidTotal)
         {
             Assert.False(FiscalReceiptTotalValidator.Validate(invalidTotal));
@@ -29,9 +29,9 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             return total;
         }
 
-        public static IEnumerable<object[]> InvalidTotals()
+        public static TheoryData<FiscalReceiptTotal> InvalidTotals()
         {
-            return FiscalReceiptTestData.InvalidTotals().Select(t => new[] {t});
+            return [.. FiscalReceiptTestData.InvalidTotals()];
         }
     }
 }

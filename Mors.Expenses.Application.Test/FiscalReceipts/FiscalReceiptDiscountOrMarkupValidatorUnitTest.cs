@@ -15,15 +15,15 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         }
 
         [Theory]
-        [MemberData("InvalidDiscountOrMarkups")]
+        [MemberData(nameof(InvalidDiscountOrMarkups))]
         public void Validate_Returns_False_For_Invalid_Discount_Or_Markup(FiscalReceiptDiscountOrMarkup invalidDiscountOrMarkup)
         {
             Assert.False(FiscalReceiptDiscountOrMarkupValidator.Validate(invalidDiscountOrMarkup));
         }
 
-        public static IEnumerable<object[]> InvalidDiscountOrMarkups()
+        public static TheoryData<FiscalReceiptDiscountOrMarkup> InvalidDiscountOrMarkups()
         {
-            return FiscalReceiptTestData.InvalidDiscountOrMarkups().Select(m => new[] {m});
+            return [.. FiscalReceiptTestData.InvalidDiscountOrMarkups()];
         }
     }
 }

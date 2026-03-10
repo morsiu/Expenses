@@ -15,15 +15,15 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         }
 
         [Theory]
-        [MemberData("InvalidReceiptItems")]
+        [MemberData(nameof(InvalidReceiptItems))]
         public void Validate_Returns_False_For_Invalid_Receipt_Item(FiscalReceiptItem invalidReceiptItem)
         {
             Assert.False(FiscalReceiptItemValidator.Validate(invalidReceiptItem));
         }
 
-        public static IEnumerable<object[]> InvalidReceiptItems()
+        public static TheoryData<FiscalReceiptItem> InvalidReceiptItems()
         {
-            return FiscalReceiptTestData.InvalidReceiptItems().Select(i => new[] { i });
+            return [.. FiscalReceiptTestData.InvalidReceiptItems()];
         }
     }
 }

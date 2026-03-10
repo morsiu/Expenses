@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Mors.Expenses.Application.FiscalReceipts;
 using Mors.Expenses.Data.Commands;
 using Mors.Expenses.Data.Events;
@@ -9,12 +9,12 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
     public sealed class AddFiscalReceiptCommandHandlerIntegrationTest
     {
         [Theory]
-        [MemberData("InvalidCommands")]
+        [MemberData(nameof(InvalidCommands))]
         public void Execute_Returns_False_Given_Invalid_Command(AddFiscalReceiptCommand command)
         {
             var handler = Handler();
             var result = handler.Execute(command, new CommandEnvironmentDummy());
-            Assert.Equal(false, result);
+            Assert.False(result);
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         {
             var handler = Handler();
             var result = handler.Execute(ValidCommand(), new CommandEnvironmentDummy());
-            Assert.Equal(true, result);
+            Assert.True(result);
         }
 
         [Fact]
@@ -35,7 +35,7 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
         }
 
         [Theory]
-        [MemberData("InvalidCommands")]
+        [MemberData(nameof(InvalidCommands))]
         public void Execute_Does_Not_Publish_Events_Given_Invalid_Command(AddFiscalReceiptCommand invalidCommand)
         {
             var handler = Handler();
@@ -245,18 +245,17 @@ namespace Mors.Expenses.Application.Test.FiscalReceipts
             }
         }
 
-        public static IEnumerable<object[]> InvalidCommands()
+        public static TheoryData<AddFiscalReceiptCommand> InvalidCommands()
         {
-            yield return new[] { default(AddFiscalReceiptCommand) };
-            foreach (var invalidReceipt in FiscalReceiptTestData.InvalidReceipts())
-            {
-                yield return new[] { new AddFiscalReceiptCommand { Receipt = invalidReceipt } };
-            }
+            return [
+                default(AddFiscalReceiptCommand),
+                .. FiscalReceiptTestData.InvalidReceipts().Select(r => new AddFiscalReceiptCommand { Receipt = r })
+            ];
         }
 
         private static AddFiscalReceiptCommand ValidCommand()
         {
-            return new AddFiscalReceiptCommand{ Receipt = FiscalReceiptTestData.ValidReceipt() };
+            return new AddFiscalReceiptCommand { Receipt = FiscalReceiptTestData.ValidReceipt() };
         }
 
         private static AddFiscalReceiptCommandHandler Handler()

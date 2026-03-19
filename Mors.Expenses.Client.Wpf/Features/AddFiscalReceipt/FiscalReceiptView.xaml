@@ -1,0 +1,223 @@
+﻿<UserControl
+    x:Class="Mors.Expenses.Client.Wpf.Features.AddFiscalReceipt.FiscalReceiptView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Mors.Expenses.Client.Wpf.Features.AddFiscalReceipt"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="900"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="Auto" />
+            <ColumnDefinition
+                Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Sale place name" />
+        <TextBox
+            Grid.Row="0"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Sale place address" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            AcceptsReturn="True" />
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Content="Tax payer name" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="Tax payer address" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            AcceptsReturn="True" />
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Content="Tax payer NIP" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="5"
+            Grid.Column="0"
+            Content="Date of sale" />
+        <DatePickerTextBox
+            Grid.Row="5"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Content="Items" />
+        <DataGrid
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Name" />
+                <DataGridTextColumn
+                    Header="Amount" />
+                <DataGridTextColumn
+                    Header="Unit gross value" />
+                <DataGridTextColumn
+                    Header="Gross value" />
+                <DataGridTextColumn
+                    Header="Vat rate letter" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label
+            Grid.Row="8"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Content="Discounts/markups" />
+        <DataGrid
+            Grid.Row="9"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Name" />
+                <DataGridTextColumn
+                    Header="Value" />
+                <DataGridTextColumn
+                    Header="Vat rate letter" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label
+            Grid.Row="10"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Content="Totals per vat rate" />
+        <DataGrid
+            Grid.Row="11"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Vat letter" />
+                <DataGridTextColumn
+                    Header="Vat rate in %" />
+                <DataGridTextColumn
+                    Header="Vat value" />
+                <DataGridTextColumn
+                    Header="Gross value" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label
+            Grid.Row="12"
+            Grid.Column="0"
+            Content="Vat total" />
+        <TextBox
+            Grid.Row="12"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="13"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Content="Gross total" />
+        <TextBox
+            Grid.Row="13"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="14"
+            Grid.Column="0"
+            Content="Currency code" />
+        <TextBox
+            Grid.Row="14"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="15"
+            Grid.Column="0"
+            Content="Fiscal receipt number" />
+        <TextBox
+            Grid.Row="15"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="16"
+            Grid.Column="0"
+            Content="Time of sale" />
+        <TextBox
+            Grid.Row="16"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="17"
+            Grid.Column="0"
+            Content="Payment form" />
+        <TextBox
+            Grid.Row="17"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="18"
+            Grid.Column="0"
+            Content="Payment total" />
+        <TextBox
+            Grid.Row="18"
+            Grid.Column="1" />
+        <Label
+            Grid.Row="19"
+            Grid.Column="0"
+            Content="Cash payment change" />
+        <TextBox
+            Grid.Row="19"
+            Grid.Column="1" />
+    </Grid>
+</UserControl>

@@ -1,7 +1,6 @@
-﻿namespace Mors.Expenses.Application
+﻿namespace Mors.Expenses.Application;
+
+public interface ICommandEnvironment
 {
-    public interface ICommandEnvironment
-    {
-        void PublishEvent(object @event);
-    }
+    void PublishEvent(object @event);
 }

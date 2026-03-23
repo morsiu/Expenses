@@ -1,12 +1,11 @@
 ﻿using System.Windows;
 
-namespace Mors.Expenses.Client.Wpf
+namespace Mors.Expenses.Client.Wpf;
+
+public sealed class Bootstrapper
 {
-    public sealed class Bootstrapper
+    public UIElement Bootstrap()
     {
-        public UIElement Bootstrap()
-        {
-            return new MainPanel();
-        }
+        return new MainPanel();
     }
 }

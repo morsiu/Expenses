@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
+﻿namespace Mors.Expenses.Client.Wpf;
 
-namespace Mors.Expenses.Client.Wpf;
-
-internal partial class MainPanel : UserControl
+internal partial class MainPanel
 {
     public MainPanel()
     {

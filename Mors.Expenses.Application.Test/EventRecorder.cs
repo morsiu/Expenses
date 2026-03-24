@@ -25,7 +25,8 @@ internal sealed class EventRecorder : ICommandEnvironment
     }
 
     internal TEvent FindEvent<TEvent>()
+        where TEvent : class
     {
-        return _events.OfType<TEvent>().FirstOrDefault(e => e != null);
+        return _events.OfType<TEvent>().FirstOrDefault();
     }
 }

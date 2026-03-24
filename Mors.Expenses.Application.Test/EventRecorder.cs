@@ -7,7 +7,7 @@ namespace Mors.Expenses.Application.Test;
 
 internal sealed class EventRecorder : ICommandEnvironment
 {
-    private readonly List<object> _events = new();
+    private readonly List<object> _events = [];
 
     void ICommandEnvironment.PublishEvent(object @event)
     {
